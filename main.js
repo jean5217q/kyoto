@@ -18,23 +18,33 @@ const nav = document.querySelector('.sm-nav-list') //導覽列
 const body = document.querySelectorAll('.nav-active') //導覽列
 
 //一般開關
-function toggleHandler(){
+function toggleHandler(e){
   nav.classList.toggle('show-nav')
-  menuIcon.forEach(el=>el.classList.toggle('active'))
+  menuIcon.forEach(el=>el.classList.toggle('active')) 
+  //滾動控制
+  if (nav.classList.contains('show-nav')) {
+    document.addEventListener('touchmove',stopsScroll, {passive: false})
+  }
+  else {
+    document.removeEventListener('touchmove',stopsScroll,{passive: true}); 
+  }
 }
 //點非導覽列關閉
 function closeNavHandler(e){
     if(!e.target.classList.contains('nav-active')) {
       nav.classList.remove('show-nav')
       menuIcon.forEach(el=>el.classList.remove('active'))
+      //滾動控制
+      document.removeEventListener('touchmove',stopsScroll,{passive: true});
     }
+}
+//停止滾動
+function stopsScroll(e){
+  e.preventDefault()
 }
 
 menu.addEventListener('click',toggleHandler)
 window.addEventListener('click',closeNavHandler)
-
-
-
 
 
 
@@ -61,3 +71,4 @@ function changeTopHandler(){
 }
 
 topHero.addEventListener('click',changeTopHandler)
+
