@@ -202,9 +202,10 @@ nav .header-logo {
   position: absolute;
   top: 0;
   right: -70%;
+  bottom: 0;
   z-index: 1500;
   width: 60%;
-  height: 200vh;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,8 +233,6 @@ nav .header-logo {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-transform: translateY(-50vh);
-          transform: translateY(-50vh);
 }
 
 .sm-nav-list li {
